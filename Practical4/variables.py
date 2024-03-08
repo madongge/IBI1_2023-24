@@ -3,7 +3,7 @@ b=36
 c=30
 d=a-b
 e=b-c
-if d>=e :
+if d>=e : #do the comparison
     print('only training makes great improvement')
 else:print('strength training makes great improvement')
 X=True
@@ -16,4 +16,3 @@ W='either X or Y'
 # True   False  True
 # False  True   True  
 # False   False False
-#

@@ -38,5 +38,4 @@ plt.title('City Populations in China')
 plt.xlabel('Cities')  
 plt.ylabel('Population (millions)')  
 plt.xticks(range(len(china_populations)), [city["name"] for city in cities if city["country"] == "China"], rotation=45)  
-
 plt.show()  # Display the plot

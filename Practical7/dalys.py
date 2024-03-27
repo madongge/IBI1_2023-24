@@ -41,12 +41,10 @@ else:
     print("DALYs in 2019 is equal to the mean.")
 
 #print the plot
-plt.plot(china_data["Year"], china_data["DALYs"], 'b+')  # 'b+'代表蓝色加号标记
-plt.xlabel("Year")
+plt.plot(china_data["Year"], china_data["DALYs"], 'b+')  
 plt.ylabel("DALYs")
 plt.title("DALYs in China over Time")
-plt.xticks(china_data["Year"], rotation=-90)  # 使x轴标签旋转-90度
-plt.grid(True)  
+plt.xticks(china_data["Year"], rotation=-90)  
 plt.show()
 
 #Plot a boxplot of DALYs across countries in 2019.

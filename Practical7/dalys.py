@@ -25,9 +25,12 @@ print(dalys_data.loc[is_afghanistan, "DALYs"])
 import numpy as np
 import matplotlib.pyplot as plt
 
-china_data = dalys_data.loc[dalys_data["Entity"] == "China", ["Entity", "Year", "DALYs"]]
+#afghanistan_data
+afghanistan_data = dalys_data.loc[dalys_data["Entity"] == "Afghanistan"]
+print(afghanistan_data["DALYs"])
 
-# calculate
+#china_data
+china_data = dalys_data.loc[dalys_data["Entity"] == "China", ["Entity", "Year", "DALYs"]]
 mean_dalys_china = np.mean(china_data["DALYs"])
 print("Mean DALYs in China over time:", mean_dalys_china)
 

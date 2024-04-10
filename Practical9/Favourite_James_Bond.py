@@ -1,4 +1,4 @@
-#please input" first, i don't know how to deal with the dquote
+#favorite actor
 def favorite_bond(year_born):
     bond_actors = {
         "Roger Moore": (1973, 1986),

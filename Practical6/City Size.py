@@ -21,19 +21,19 @@ uk_populations.sort()
 china_populations.sort()
 
 # Plotting
-plt.figure(figsize=(12, 6))  # Set the size of the figure
+plt.figure(figsize=(10, 5))  # Set the size of the figure
 
 # Bar plot for UK city populations
 plt.subplot(1, 2, 1)  # Create a subplot with 1 row, 2 columns, and select the first subplot
-plt.bar(range(len(uk_populations)), uk_populations, color='skyblue')  # Create the bar plot
+plt.bar(range(len(uk_populations)), uk_populations)  # Create the bar plot
 plt.title('City Populations in the UK')  # Set the title of the plot
-plt.xlabel('Cities')  # Set the label for the x-axis
-plt.ylabel('Population (millions)')  # Set the label for the y-axis
+plt.xlabel('Cities')  
+plt.ylabel('Population (millions)')  
 plt.xticks(range(len(uk_populations)), [city["name"] for city in cities if city["country"] == "UK"], rotation=45)  # Set the tick labels for the x-axis
 
 # Bar plot for China city populations
 plt.subplot(1, 2, 2)  
-plt.bar(range(len(china_populations)), china_populations, color='lightgreen')  # Create the bar plot
+plt.bar(range(len(china_populations)), china_populations)  # Create the bar plot
 plt.title('City Populations in China')  
 plt.xlabel('Cities')  
 plt.ylabel('Population (millions)')  

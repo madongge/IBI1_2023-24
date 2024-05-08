@@ -1,5 +1,7 @@
 import os
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
 os.chdir("/Users/madongge/Downloads/IBI1/IBI1_2023-24/Practical7")
 
@@ -21,9 +23,6 @@ print(dalys_data.loc[:, "Entity"])
 
 is_afghanistan = dalys_data["Entity"] == "Afghanistan"
 print(dalys_data.loc[is_afghanistan, "DALYs"])
-
-import numpy as np
-import matplotlib.pyplot as plt
 
 #afghanistan_data
 afghanistan_data = dalys_data.loc[dalys_data["Entity"] == "Afghanistan"]

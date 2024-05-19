@@ -1,5 +1,5 @@
 Question:
 Plot a boxplot of DALYs across countries in 2019.
 
-52
+line52 can show the result
 

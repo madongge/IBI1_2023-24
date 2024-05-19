@@ -13,11 +13,11 @@ infected = [I]
 recovered = [R]
 
 for _ in range(1000):
-    # 计算每个时间点的概率
+    # count the prabability at each point
     prob_infection = beta * (I / N)
     prob_recovery = gamma
     
-    # 感染者和易感染者的人数
+    # count the number of people
     newly_infected = np.random.choice([0, 1], S, p=[1 - prob_infection, prob_infection]).sum()
     newly_recovered = np.random.choice([0, 1], I, p=[1 - prob_recovery, prob_recovery]).sum()
     

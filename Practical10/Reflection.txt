@@ -1,0 +1,4 @@
+Challenges：
+Negative Dimensions Error: Resolved issues with negative susceptible population counts.
+Probabilistic Variability: Ensured consistent model behavior despite randomness.
+Vaccination Integration: Adjusted initial counts for vaccinated individuals.

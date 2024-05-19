@@ -39,3 +39,14 @@ plt.xlabel('Cities')
 plt.ylabel('Population (millions)')  
 plt.xticks(range(len(china_populations)), [city["name"] for city in cities if city["country"] == "China"], rotation=45)  
 plt.show()  # Display the plot
+
+# Function to print sorted lists of city sizes
+def print_sorted_city_sizes(cities_list, country_name):
+    print(f"Sorted city sizes in {country_name}:")
+    for city in sorted(cities, key=lambda x: x["population"] if x["country"] == country_name else float('inf')):
+        if city["country"] == country_name:
+            print(f"{city['name']}: {city['population']} million")
+
+# Print the sorted city sizes
+print_sorted_city_sizes(cities, "UK")
+print_sorted_city_sizes(cities, "China")

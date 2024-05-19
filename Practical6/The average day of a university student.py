@@ -19,7 +19,7 @@ activities = list(daily_schedule.keys())
 time_spent = list(daily_schedule.values())
 # Plotting the pie chart without percentages
 plt.figure(figsize=(10, 8))
-plt.pie(time_spent, labels=activities, autopct='%1.1f hours', startangle=140, colors=plt.cm.tab20.colors)
+plt.pie(time_spent, labels=activities, autopct=lambda p: '{:.1f}h'.format(p) if p else '', startangle=140, colors=plt.cm.tab20.colors)
 plt.title('Average Day of a University Student')
 plt.axis('equal')
 plt.show()

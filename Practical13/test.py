@@ -1,3 +1,4 @@
+#find the blosum62_matrix from internet
 blosum62_matrix = {
     ('A', 'A'):  4, ('A', 'R'): -1, ('A', 'N'): -2, ('A', 'D'): -2, ('A', 'C'):  0,
     ('A', 'Q'): -1, ('A', 'E'): -1, ('A', 'G'):  0, ('A', 'H'): -2, ('A', 'I'): -1,

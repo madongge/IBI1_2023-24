@@ -82,23 +82,32 @@ def main():
     print("Cellular Component:", cc_sax)
     print("Time taken by SAX:", time_sax)
     
-    # Plot the results
+# Plot the results for DOM
     labels = ['Molecular Function', 'Biological Process', 'Cellular Component']
     dom_counts = [mf_dom, bp_dom, cc_dom]
-    sax_counts = [mf_sax, bp_sax, cc_sax]
     
     x = range(len(labels))
-    width = 0.35
     
-    fig, ax = plt.subplots()
-    rects1 = ax.bar(x, dom_counts, width, label='DOM')
-    rects2 = ax.bar([p + width for p in x], sax_counts, width, label='SAX')
+    fig_dom, ax_dom = plt.subplots()
+    ax_dom.bar(x, dom_counts, width=0.5, label='DOM', color='b')
     
-    ax.set_ylabel('Counts')
-    ax.set_title('GO Term Counts by Ontology')
-    ax.set_xticks([p + width / 2 for p in x])
-    ax.set_xticklabels(labels)
-    ax.legend()
+    ax_dom.set_ylabel('Counts')
+    ax_dom.set_title('GO Term Counts by Ontology (DOM)')
+    ax_dom.set_xticks(x)
+    ax_dom.set_xticklabels(labels)
+    ax_dom.legend()
+    
+    # Plot the results for SAX
+    sax_counts = [mf_sax, bp_sax, cc_sax]
+    
+    fig_sax, ax_sax = plt.subplots()
+    ax_sax.bar(x, sax_counts, width=0.5, label='SAX', color='r')
+    
+    ax_sax.set_ylabel('Counts')
+    ax_sax.set_title('GO Term Counts by Ontology (SAX)')
+    ax_sax.set_xticks(x)
+    ax_sax.set_xticklabels(labels)
+    ax_sax.legend()
     
     plt.show()
 

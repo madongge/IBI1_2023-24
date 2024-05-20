@@ -101,12 +101,11 @@ blosum62_matrix = {
     ('V', 'S'): -2, ('V', 'T'):  0, ('V', 'W'): -3, ('V', 'Y'): -1, ('V', 'V'):  4
 }
 
-# 全局比对函数
+
 def global_alignment(sequence1, sequence2, blosum_matrix, gap_penalty):
-    # 初始化分数矩阵
+
     score_matrix = [[0] * (len(sequence2) + 1) for _ in range(len(sequence1) + 1)]
 
-    # 填充分数矩阵
     for i in range(1, len(sequence1) + 1):
         for j in range(1, len(sequence2) + 1):
             match = score_matrix[i-1][j-1] + match_score(sequence1[i-1], sequence2[j-1], blosum_matrix)
@@ -114,7 +113,6 @@ def global_alignment(sequence1, sequence2, blosum_matrix, gap_penalty):
             insert = score_matrix[i][j-1] + gap_penalty
             score_matrix[i][j] = max(match, delete, insert)
 
-    # 回溯找到最优比对方案
     aligned_seq1 = []
     aligned_seq2 = []
     i, j = len(sequence1), len(sequence2)
@@ -135,44 +133,38 @@ def global_alignment(sequence1, sequence2, blosum_matrix, gap_penalty):
     aligned_seq1.reverse()
     aligned_seq2.reverse()
 
-    # 计算百分比身份
     identity = sum(a == b for a, b in zip(aligned_seq1, aligned_seq2)) / max(len(aligned_seq1), len(aligned_seq2)) * 100
 
     return ''.join(aligned_seq1), ''.join(aligned_seq2), score_matrix[-1][-1], identity
 
-# 氨基酸匹配分数函数
+# amino acid matching score function
 def match_score(alpha, beta, blosum_matrix):
     try:
         return blosum_matrix[(alpha, beta)]
     except KeyError:
         return blosum_matrix[(beta, alpha)]
 
-# 读取序列文件
 def read_fasta(file_path):
     with open(file_path) as file:
         lines = file.readlines()
-    # 跳过首行（序列标识行）
+    # skip the first line
     sequence = ''.join(line.strip() for line in lines[1:])
     return sequence
 
-# 主函数
 def main():
-    # 序列文件路径
     human_sequence_file = "/Users/madongge/Downloads/IBI1/IBI1_2023-24/Practical13/SLC6A4_HUMAN.fa"
     mouse_sequence_file = "/Users/madongge/Downloads/IBI1/IBI1_2023-24/Practical13/SLC6A4_MOUSE.fa"
     rat_sequence_file = "/Users/madongge/Downloads/IBI1/IBI1_2023-24/Practical13/SLC6A4_RAT.fa"
 
-    # 读取序列
     human_sequence = read_fasta(human_sequence_file)
     mouse_sequence = read_fasta(mouse_sequence_file)
     rat_sequence = read_fasta(rat_sequence_file)
 
-    # 执行全局比对并计算相似性得分和百分比身份
+    # perform global alignment and calculate the percentage similarity scores and identity
     human_mouse_alignment = global_alignment(human_sequence, mouse_sequence, blosum62_matrix, -2)
     human_rat_alignment = global_alignment(human_sequence, rat_sequence, blosum62_matrix, -2)
     mouse_rat_alignment = global_alignment(mouse_sequence, rat_sequence, blosum62_matrix, -2)
 
-    # 输出结果
     print("Human-Mouse Alignment:")
     print("Alignment Score:", human_mouse_alignment[2])
     print("Percentage Identity:", human_mouse_alignment[3])
@@ -188,7 +180,7 @@ def main():
     print("Percentage Identity:", mouse_rat_alignment[3])
     print()
 
-    # 比较相似性和判断模型生物
+    # compare similarities and judge model organisms
     human_mouse_score = human_mouse_alignment[2]
     human_rat_score = human_rat_alignment[2]
 

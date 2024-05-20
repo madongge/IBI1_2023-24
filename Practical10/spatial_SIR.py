@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 beta = 0.3
 gamma = 0.05
-#100x100 的数组
+#100x100 array
 population = np.zeros((100, 100))
 
 outbreak = np.random.choice(range(100), 2)
